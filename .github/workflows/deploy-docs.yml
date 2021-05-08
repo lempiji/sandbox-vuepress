@@ -16,12 +16,10 @@ jobs:
       - run: npm install
       - run: npm run build
 
-      - run: cd docs/
-
       - name: Count changes
         id: changes
         run: |
-          git add -N .
+          git add -N docs/
           echo "::set-output name=count::$(git diff --name-only | wc -l)"
 
       - name: Config git
@@ -33,6 +31,5 @@ jobs:
       - name: Commit and push docs
         if: steps.changes.outputs.count > 0
         run: |
-          git add .
-          git commit -m 'Update docs'
+          git commit -a -m 'Update docs'
           git push origin master
