@@ -21,7 +21,7 @@ jobs:
       - name: Count changes
         id: changes
         run: |
-          git add -A .
+          git add -N .
           echo "::set-output name=count::$(git diff --name-only | wc -l)"
 
       - name: Config git
