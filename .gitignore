@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/sandbox-vuepress
+sandbox-vuepress.so
+sandbox-vuepress.dylib
+sandbox-vuepress.dll
+sandbox-vuepress.a
+sandbox-vuepress.lib
+sandbox-vuepress-test-*
+*.exe
+*.o
+*.obj
+*.lst
+
+node_modules
