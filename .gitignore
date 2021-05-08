@@ -1,7 +1,6 @@
 .dub
 docs.json
 __dummy.html
-docs/
 /sandbox-vuepress
 sandbox-vuepress.so
 sandbox-vuepress.dylib
