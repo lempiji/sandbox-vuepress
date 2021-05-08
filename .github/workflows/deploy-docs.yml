@@ -33,4 +33,6 @@ jobs:
       - name: Commit and push docs
         if: steps.changes.outputs.count > 0
         run: |
+          git add .
           git commit -m 'Update docs'
+          git push origin master
