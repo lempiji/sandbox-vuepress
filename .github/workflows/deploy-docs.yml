@@ -1,0 +1,36 @@
+name: Deploy Github Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run build
+
+      - run: cd docs/
+
+      - name: Count changes
+        id: changes
+        run: |
+          git add -A .
+          echo "::set-output name=count::$(git diff --name-only | wc -l)"
+
+      - name: Config git
+        if: steps.changes.outputs.count > 0
+        run: |
+          git config --global user.name "lempiji"
+          git config --global user.email "lempiji@gmail.com"
+
+      - name: Commit and push docs
+        if: steps.changes.outputs.count > 0
+        run: |
+          git commit -m 'Update docs'
