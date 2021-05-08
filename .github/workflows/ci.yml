@@ -28,6 +28,7 @@ jobs:
 
     - name: 'Document Test'
       run: |
+        dub fetch md
         dub run md -- doc/README.md
 
   build-docs:
